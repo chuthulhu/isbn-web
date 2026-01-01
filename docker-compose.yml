@@ -1,0 +1,10 @@
+version: '3'
+services:
+  isbn-web:
+    build: .
+    container_name: isbn-web
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env.local
+    restart: always

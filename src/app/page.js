@@ -32,7 +32,8 @@ export default function Home() {
         try {
             const cleanIsbn = isbn.replace(/-/g, '').trim();
 
-            const res = await fetch(`/api/search?isbn=${cleanIsbn}`);
+            // 백엔드 서버(book.physichu.kr)의 API 호출
+            const res = await fetch(`https://book.physichu.kr/api/search?isbn=${cleanIsbn}`);
             const data = await res.json();
 
             if (!res.ok) {

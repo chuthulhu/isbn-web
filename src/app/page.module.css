@@ -1,141 +1,254 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
+.container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  padding: 2rem;
+  background-color: #f8f9fa;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
 }
 
 .main {
-  display: flex;
-  min-height: 100vh;
+  background: white;
+  padding: 40px;
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  max-width: 1000px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ddd;
 }
 
-.intro {
+/* Main Containers */
+.formTable {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
+.middleSection {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  gap: 20px;
+  align-items: stretch;
+  /* Match height of table and thumbnail */
+  margin-bottom: 20px;
 }
 
-.ctas a {
+/* Book Info Wrapper (Transparent Container) */
+.bookInfoWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Align inner table to bottom */
+  border: none;
+}
+
+/* Book Info Table (Visible Bordered Table) */
+.bookInfoTable {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #333;
+}
+
+/* Thumbnail Section (Right) */
+.thumbnailSection {
+  width: 350px;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
+  /* No visible border as requested */
   border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  padding: 10px;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
+/* Rows within Book Info Table */
+.row {
+  display: flex;
+  border-bottom: 1px solid #333;
+}
+
+.row:last-child {
+  border-bottom: none;
+  /* No bottom border for the last item inside the bordered box */
+}
+
+/* Common Cell Styles */
+.labelCell {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #333;
+  padding: 10px;
+  min-width: 100px;
+}
+
+.inputCell {
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* Specific Section Layouts */
+
+/* Inputs */
+.inputField {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #000000;
+  /* Force black text */
+  background-color: #ffffff;
+  /* Force white background */
+  outline: none;
+}
+
+.inputField:focus {
+  border-color: #667eea;
+}
+
+/* Search Row */
+.searchRow {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.searchButton {
+  padding: 8px 16px;
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.searchButton:hover {
+  background-color: #2d3748;
+}
+
+/* Split Row (Information) */
+.splitRow {
+  display: flex;
+  width: 100%;
+}
+
+.halfValidation {
+  display: flex;
+  flex: 1;
+}
+
+.halfValidation:first-child {
+  border-right: 1px solid #333;
+}
+
+.halfValidation .labelCell {
+  min-width: 80px;
+}
+
+/* Book Info Text */
+.infoText {
+  padding-left: 5px;
+  font-size: 1rem;
+}
+
+/* Thumbnail */
+.thumbnailPlaceholder {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.bookImage {
+  max-width: 100%;
+  max-height: 100%;
+  /* Fill container height if possible, or limit */
+  /* Since container stretches to table height, max-height: 100% works best to fit */
+  object-fit: contain;
+}
+
+/* Report Area */
+.reportRow {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  border: 2px solid #333;
+  margin-top: 0;
+}
+
+.reportLabel {
+  background-color: #f4f4f4;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+  text-align: left;
+}
+
+/* Report Textarea */
+.reportTextarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  padding: 15px;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  color: #000000;
+  /* Force black text */
+  background-color: #ffffff;
+  /* Force white background */
+}
+
+/* Top Student Info Bar */
+.studentInfoBar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.studentInfoItem {
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.studentLabel {
+  font-weight: bold;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.smallInput {
+  width: 80px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #000000;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.message {
+  padding: 10px;
+  text-align: center;
+  color: #666;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.error {
+  padding: 10px;
+  text-align: center;
+  color: red;
 }

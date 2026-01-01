@@ -6,7 +6,8 @@
   justify-content: center;
   padding: 2rem;
   background-color: #f8f9fa;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   color: #333;
 }
 
@@ -251,4 +252,75 @@
   padding: 10px;
   text-align: center;
   color: red;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  /* Stack Student Info items */
+  .studentInfoBar {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between; /* Distribute items evenly */
+  }
+
+  .studentInfoItem {
+    width: 48%; /* 2 items per row */
+    justify-content: space-between;
+  }
+
+  .studentInfoItem input {
+    width: 60%; /* Adjust input width */
+  }
+
+  /* Stack Middle Section */
+  .middleSection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Make Thumbnail full width and sit below table */
+  .thumbnailSection {
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+    min-height: 200px;
+  }
+
+  .bookImage {
+    max-height: 300px; /* Limit height on mobile */
+  }
+
+  /* Adjust Table Cells for small screens */
+  .labelCell {
+    min-width: 80px;
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .inputCell {
+    padding: 8px;
+  }
+
+  .inputField {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .studentInfoItem {
+    width: 100%; /* 1 item per row on very small screens */
+  }
+
+  .labelCell {
+    min-width: 70px;
+    font-size: 0.85rem;
+  }
 }
